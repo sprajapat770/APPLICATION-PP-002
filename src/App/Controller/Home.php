@@ -8,7 +8,7 @@ class Home
 {
     public function index(): View
     {
-        return View::make('index');
+        return View::make('index',['foo' => 'bar'] );
     }
 
     public function upload() :void

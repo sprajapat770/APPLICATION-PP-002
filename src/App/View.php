@@ -22,6 +22,11 @@ class View
         if (! file_exists($viewPath)) {
             throw new ViewNotFoundException();
         }
+//        foreach ($this->params as $key => $value) {
+//            $$key = $value;
+//        }
+
+        extract($this->params);
         ob_start();
         include $viewPath;
         return (string) ob_get_clean();
@@ -30,5 +35,10 @@ class View
     public function __toString(): string
     {
         return $this->render();
+    }
+
+    public function __get(string $name)
+    {
+       return $this->params[$name] ?? null;
     }
 }
