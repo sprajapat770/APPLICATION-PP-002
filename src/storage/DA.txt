@@ -1,0 +1,11 @@
+         'dbname' => 'aad83cd9_fresh',
+                'username' => 'aad83cd9_fresh',
+                'password' => 'WinkedFliesPapaEgrets',
+
+
+
+                'dbname' => 'aad83cd9_dev_migration',
+                'username' => 'aad83cd9_dev_migration',
+                'password' => 'BroomsScoreSeaSpots',
+
+

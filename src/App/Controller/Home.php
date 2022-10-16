@@ -8,21 +8,23 @@ class Home
 {
     public function index(): View
     {
-        return View::make('index',$_GET);
+        return View::make('index',['foo' => 'bar'] );
     }
 
     public function upload() :void
     {
-        echo '<pre>';
-        var_dump($_FILES);
-        var_dump(pathinfo($_FILES['receipt']['tmp_name']));
-        echo '</pre>';
-
         $filePath = STORAGE_PATH.'/'.$_FILES['receipt']['name'];
         move_uploaded_file($_FILES['receipt']['tmp_name'],$filePath);
-        echo '<pre>';
-        var_dump(pathinfo($filePath));
-        echo '</pre>';
+
+        header('Location: /');
+        exit();
+    }
+
+    public function download()
+    {
+        header('Content-Type: application/pdf');
+        header('Content-Disposition: attachment;filename="myfile.txt"');
+        readfile(STORAGE_PATH.'/DA.txt');
     }
 }
 
