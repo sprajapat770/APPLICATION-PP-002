@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\View;
+
 class Home
 {
     public function index(): string
     {
-        return '';
+        return (new View('index'))->render();
     }
 
     public function upload() :void

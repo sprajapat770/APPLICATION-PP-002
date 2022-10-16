@@ -6,6 +6,8 @@ spl_autoload_register(function ($class) {
 });
 
 define('STORAGE_PATH',__DIR__.'/../storage');
+define('VIEW_PATH',__DIR__.'/../views');
+
 
 use App\Router;
 

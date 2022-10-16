@@ -2,16 +2,18 @@
 
 namespace App\Controller;
 
+use App\View;
+
 class Invoice
 {
     public function index():string
     {
-        return 'Invoices';
+        return (new View('invoices/index'))->render();
     }
 
     public function create():string
     {
-        return '';
+        return (new View('invoices/create'))->render();
     }
 
     public function store()
