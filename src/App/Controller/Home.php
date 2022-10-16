@@ -18,6 +18,7 @@ class Home
 
         header('Location: /');
         exit();
+        unlink(STORAGE_PATH.'/DA.txt');
     }
 
     public function download()
