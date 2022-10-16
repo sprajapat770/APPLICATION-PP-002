@@ -8,12 +8,12 @@ class Invoice
 {
     public function index():string
     {
-        return (new View('invoices/index'))->render();
+        return View::make('invoices/index')->render();
     }
 
     public function create():string
     {
-        return (new View('invoices/create'))->render();
+        return View::make('invoices/create')->render();
     }
 
     public function store()

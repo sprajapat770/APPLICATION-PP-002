@@ -8,7 +8,7 @@ class Home
 {
     public function index(): string
     {
-        return (new View('index'))->render();
+        return View::make('index')->render();
     }
 
     public function upload() :void

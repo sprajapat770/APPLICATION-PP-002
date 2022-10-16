@@ -10,6 +10,12 @@ class View
        protected string $view,
        protected array $params = []) { }
 
+    public static function make(
+        string $view,
+        array $params=[]
+    ) {
+        return new static($view, $params);
+    }
     public function render(): string
     {
         $viewPath = VIEW_PATH.'/'.$this->view.'.php';
