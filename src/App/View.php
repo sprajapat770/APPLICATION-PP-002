@@ -26,4 +26,9 @@ class View
         include $viewPath;
         return (string) ob_get_clean();
     }
+
+    public function __toString(): string
+    {
+        return $this->render();
+    }
 }

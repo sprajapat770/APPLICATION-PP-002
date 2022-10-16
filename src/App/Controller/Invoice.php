@@ -6,14 +6,14 @@ use App\View;
 
 class Invoice
 {
-    public function index():string
+    public function index(): View
     {
-        return View::make('invoices/index')->render();
+        return View::make('invoices/index');
     }
 
-    public function create():string
+    public function create(): View
     {
-        return View::make('invoices/create')->render();
+        return View::make('invoices/create');
     }
 
     public function store()

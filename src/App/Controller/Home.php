@@ -6,9 +6,9 @@ use App\View;
 
 class Home
 {
-    public function index(): string
+    public function index(): View
     {
-        return View::make('index')->render();
+        return View::make('index');
     }
 
     public function upload() :void
