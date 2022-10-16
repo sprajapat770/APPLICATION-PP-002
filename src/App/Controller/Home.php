@@ -1,17 +1,12 @@
 <?php
 
-namespace App\Classes;
+namespace App\Controller;
 
 class Home
 {
     public function index(): string
     {
-        return <<<FORM
-<form method="post" action="/upload" enctype="multipart/form-data">
-        <input type="file" name="receipt"/>
-        <button type="submit">Upload</button>
-        </form> 
-FORM;
+        return '';
     }
 
     public function upload() :void

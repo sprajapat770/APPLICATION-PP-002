@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Classes;
+namespace App\Controller;
 
 class Invoice
 {
@@ -11,10 +11,7 @@ class Invoice
 
     public function create():string
     {
-        return '<form method="post" action="/invoices/create">
-            <label>Amount</label>
-            <input type="text" name="amount">
-            </form>';
+        return '';
     }
 
     public function store()
