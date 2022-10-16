@@ -14,7 +14,7 @@ class Home
             '/',
             '',
             false,
-            false
+            false ///onlyHttp client restriction
         );
         return 'Home';
     }
