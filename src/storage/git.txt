@@ -1,0 +1,81 @@
+git config user.name "Suraj Prajapat";
+git config user.email "suraj@magento360.com";
+git commit -m ""
+
+vishal@magento360.com
+St@ck0verfl0w
+
+Git password
+N2tD5m4ZL6gVGnsuHnMc
+
+
+github details
+magento360
+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
+
+sudo varnishadm ban 'req.url ~ .'
+
+            'host' => 'localhost',
+                'dbname' => 'eroomstage2',
+                'username' => 'eroomstageuser2',
+                'password' => 'EatersDisksEncampWeds152',
+
+
+                'host' => 'localhost',
+                'dbname' => 'import',
+                'username' => 'importuser',
+                'password' => 'k3jan*kJJ2.a',
+
+               'host' => 'localhost',
+                'dbname' => 'eroomdev',
+                'username' => 'eroomdevuser',
+                'password' => 'Sqh!69Ts%v',
+
+                'host' => 'localhost',
+                'dbname' => 'eroomstage',
+                'username' => 'eroomstageuser2',
+                'password' => 'EatersDisksEncampWeds152',
+
+
+                'host' => 'localhost',
+                'dbname' => 'import',
+                'username' => 'importuser',
+                'password' => 'k3jan*kJJ2.a',
+robin@team-mb.com
+
+warden env exec -T varnish varnishadm 'ban req.url ~ .'
+
+
+                'host' => 'localhost',
+                'dbname' => 'eroomdev',
+                'username' => 'eroomdevuser',
+                'password' => 'Sqh!69Ts%v',
+
+
+select `am_gr_option`.`option_id` as "Attribute Option Id" , `eav_option`.`value` as "Attribute Option Value", `am_group`.`group_code` as "Group Code",
+       `am_group`.`name` as "Group Name" from `amasty_grouped_options_group_option` `am_gr_option`
+    left join `eav_attribute_option_value` `eav_option` on (`eav_option`.`option_id` = `am_gr_option`.`option_id` and `eav_option`.`store_id` = 0)
+    left join `amasty_grouped_options_group` `am_group` on (`am_group`.`group_id` = `am_gr_option`.`group_id`) group by `am_gr_option`.`option_id` having count(`am_gr_option`.`group_id`) > 1;
+
+
+select `am_gr_option`.`option_id` as "Attribute Option Id" ,count(am_gr_option.group_id) as "COUNT",
+       `eav_option`.`value` as "Attribute Option Value", `am_group`.`group_code` as "Group Code",
+       `am_group`.`name` as "Group Name" from `amasty_grouped_options_group_option` `am_gr_option`
+        inner join `eav_attribute_option_value` `eav_option` on (`eav_option`.`option_id` = `am_gr_option`.`option_id`)
+        inner join `amasty_grouped_options_group` `am_group` on (`am_group`.`group_id` = `am_gr_option`.`group_id`)
+where eav_option.value="220-300x100" group by `am_gr_option`.`option_id`;
+
+
+select `am_gr_option`.`option_id` as "Attribute Option Id" ,count(am_group.group_id),`eav_option`.`value` as "Attribute Option Value", `am_group`.`group_code`
+    as "Group Code", `am_group`.`name` as "Group Name" from `amasty_grouped_options_group_option` `am_gr_option`
+      inner join `amasty_grouped_options_group_option` `am_gr_option_2` on (am_gr_option_2.group_id <> am_gr_option.group_id
+                                                                            and am_gr_option_2.option_id = am_gr_option.option_id)
+        left join `eav_attribute_option_value` `eav_option` on (`eav_option`.`option_id` = `am_gr_option`.`option_id` and `eav_option`.`store_id` = 0)
+        left join `amasty_grouped_options_group` `am_group` on (`am_group`.`group_id` = `am_gr_option`.`group_id`) where eav_option.value="220-300x100";
+
+select `am_gr_option`.`option_id` as "Attribute Option Id",`eav_option`.`value` as "Attribute Option Value", am_group.group_id as "Group Id", `am_group`.`group_code`
+    as "Group Code", `am_group`.`name` as "Group Name" from `amasty_grouped_options_group_option` `am_gr_option`
+      inner join `amasty_grouped_options_group_option` `am_gr_option_2` on (am_gr_option.group_id <> am_gr_option_2.group_id
+                                                                            and am_gr_option_2.option_id = am_gr_option.option_id)
+        left join `eav_attribute_option_value` `eav_option` on (`eav_option`.`option_id` = `am_gr_option`.`option_id` and `eav_option`.`store_id` = 0)
+        left join `amasty_grouped_options_group` `am_group` on (`am_group`.`group_id` = `am_gr_option`.`group_id`) order by am_gr_option.option_id;
