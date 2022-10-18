@@ -4,6 +4,9 @@ namespace App;
 
 use App\Exceptions\RouteNotFoundException;
 
+/**
+ * @property-read ?array $db
+ */
 class App
 {
 
@@ -17,10 +20,10 @@ class App
     public function __construct(
         protected Router $router,
         protected array $request,
-        protected array $config
+        protected Config $config
     )
     {
-        static::$db = new DB($config);
+        static::$db = new DB($config->db ?? []);
     }
 
     public static function db(): DB

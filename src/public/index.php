@@ -1,6 +1,6 @@
 <?php
 
-use App;
+use App\Config;
 
 spl_autoload_register(function ($class) {
     $path = __DIR__ . "/../" . str_replace("\\", "/", $class) . '.php';
@@ -21,12 +21,6 @@ $router->get('/', [App\Controller\Home::class, 'index'])
     ->post('/invoices/create', [App\Controller\Invoice::class, 'store']);
 
 (new App\App($router,['uri' => $_SERVER['REQUEST_URI'],
-    'method' => $_SERVER['REQUEST_METHOD']],
-[
-    'host' => 'db',
-    'user' => 'root',
-    'pass' => 'root',
-    'database' => 'my_db',
-    'driver' => 'mysql'
-]))->run();
+    'method' => strtolower($_SERVER['REQUEST_METHOD'])],
+new Config([])))->run();
 ?>
