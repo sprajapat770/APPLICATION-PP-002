@@ -2,26 +2,43 @@
 
 namespace App\Controller;
 
+use App\App;
 use App\View;
 
 class Home
 {
     public function index(): View
     {
-        try {
-            $db = new \PDO('mysql:host=db;dbname=my_db','root','root');
+        /** @var \PDO $db */
+        $db = App::db();
 
-            $query = 'SELECT * FROM users';
+        try {
+            $db->beginTransaction();
+
+            $newUserStmt = $db->prepare(
+                'INSERT INTO users (email, full_name, is_active, created_at)
+                      VALUES (?, ?, 1, NOW())'
+            );
+
+            $newInvoiceStmt = $db->prepare(
+                'INSERT INTO invoices (amount, user_id)
+                      VALUES (?, ?)'
+            );
+            $db->commit();
+            $db->rollBack();
+            $db->inTransaction();
+        }catch (\Throwable){
+
+        }
+        $query = 'SELECT * FROM users';
             foreach ($db->query($query) as $user) {
                 echo '<pre>';
                 var_dump($user);
                 echo '</pre>';
             }
 
-        } catch (\PDOException $e) {
-            throw new \PDOException($e->getMessage(),$e->getCode());
-        }
-        var_dump($db);
+
+
         return View::make('index',['foo' => 'bar'] );
     }
 
