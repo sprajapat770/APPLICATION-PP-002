@@ -1,0 +1,26 @@
+{
+    "name": "myapp/php-app",
+    "description": "My Own Framework based app",
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": "^7.1 || ^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": ""
+        },
+        "files": [
+            "src/DeepCopy/deep_copy.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DeepCopy\\": "fixtures/",
+            "DeepCopyTest\\": "tests/DeepCopyTest/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
