@@ -31,3 +31,12 @@ create table invoices(
     user_id int unsigned,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL ON UPDATE CASCADE
 );
+
+
+docker-compose up
+docker-compose up -d
+docker-compose stop
+docker-compose up -d --build
+docker exec -it docker-name bash //our docker-name=programming-php
+composer require --dev phpunit/phpunit ^9.5
+look composer.json and composer.lock and vendor folder in src folder
