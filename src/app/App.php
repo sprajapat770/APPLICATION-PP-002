@@ -2,7 +2,10 @@
 
 namespace App;
 
+use App\Controller\Home;
 use App\Exceptions\RouteNotFoundException;
+use App\Model\Invoice;
+use App\Model\User;
 
 /**
  * @property-read ?array $db
@@ -12,6 +15,8 @@ class App
 
     private static DB $db;
 
+    public static Container $container;
+
     /**
      * @param Router $router
      * @param array $request
@@ -19,11 +24,19 @@ class App
      */
     public function __construct(
         protected Router $router,
-        protected array $request,
+        protected array  $request,
         protected Config $config
     )
     {
         static::$db = new DB($config->db ?? []);
+        static::$container = new Container();
+        static::$container->set(Home::class, function (Container $c) {
+            return new Home($c->get(User::class),
+                $c->get(Invoice::class));
+        });
+
+        static::$container->set(User::class, fn() => new User());
+        static::$container->set(Invoice::class, fn() => new Invoice());
     }
 
     public static function db(): DB

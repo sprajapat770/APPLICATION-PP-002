@@ -10,6 +10,12 @@ use App\View;
 
 class Home
 {
+    public function __construct(
+        protected User $userModel,
+        protected Invoice $invoiceModel
+    ) {
+    }
+
     /**
      * @throws \Throwable
      */
@@ -18,12 +24,10 @@ class Home
         /** @var \PDO $db */
         $db = App::db();
         $name = "Suraj Prajapat";
-        $email = 'sprajapat701@gmail.com';
+        $email = 'sprajapat7012@gmail.com';
         $amount = 25;
 
-        $userModel = new User();
-        $invoiceModel = new Invoice();
-        $invoiceId = (new SignUp($userModel, $invoiceModel))->register([
+        $invoiceId = (new SignUp($this->userModel, $this->invoiceModel))->register([
             'email' => $email,
             'name' => $name
         ], [

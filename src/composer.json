@@ -11,5 +11,8 @@
         "psr-4": {
             "Tests\\": "tests/"
         }
+    },
+    "require": {
+        "psr/container": "^2.0"
     }
 }
