@@ -81,7 +81,14 @@ class RouterTest extends TestCase
         string $requestMethod
     ): void
     {
-        $this->router->post('/users',['Users','store']);
+        $users = new class(){
+            public function delete(): bool
+            {
+                return true;
+            }
+        };
+         $this->router->post('/users',['Users','store']);
+        $this->router->get('/users',[$users::class,'store']);
         $this->router->get('/users',['Users','index']);
 
         $this->expectException(RouteNotFoundException::class);
@@ -94,6 +101,7 @@ class RouterTest extends TestCase
             ['users','put'],
             ['/invoices','post'],
             ['/users','get'],
+            ['/users','post'],
         ];
     }
 }
