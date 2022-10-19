@@ -40,3 +40,8 @@ docker-compose up -d --build
 docker exec -it docker-name bash //our docker-name=programming-php
 composer require --dev phpunit/phpunit ^9.5
 look composer.json and composer.lock and vendor folder in src folder
+
+
+./vendor/bin/phpunit --filter it_throws_route_not_found_exception
+./vendor/bin/phpunit
+composer dump-autoload
