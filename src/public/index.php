@@ -1,18 +1,21 @@
 <?php
 
-use App\Config;
 
-spl_autoload_register(function ($class) {
-    $path = __DIR__ . "/../" . str_replace("\\", "/", $class) . '.php';
-    require $path;
-});
+require  __DIR__.'/../vendor/autoload.php';
+
+//spl_autoload_register(function ($class) {
+//    $path = __DIR__ . "/../" . str_replace("\\", "/", $class) . '.php';
+//    require $path;
+//});
 
 session_start();
 
 define('STORAGE_PATH', __DIR__ . '/../storage');
 define('VIEW_PATH', __DIR__ . '/../views');
 
-$router = new App\Router();
+use App\Config;
+use App\Router;
+$router = new Router();
 $router->get('/', [App\Controller\Home::class, 'index'])
     ->get('/download', [App\Controller\Home::class, 'download'])
     ->post('/upload', [App\Controller\Home::class, 'upload'])
