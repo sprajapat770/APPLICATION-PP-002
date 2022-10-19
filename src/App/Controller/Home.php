@@ -3,56 +3,34 @@
 namespace App\Controller;
 
 use App\App;
+use App\Model\SignUp;
+use App\Model\User;
+use App\Model\Invoice;
 use App\View;
 
 class Home
 {
+    /**
+     * @throws \Throwable
+     */
     public function index(): View
     {
-        //single db patter logic
         /** @var \PDO $db */
         $db = App::db();
-        $db1 = App::db();
-        $db2 = App::db();
+        $name = "Suraj Prajapat";
+        $email = 'sprajapat7@gmail.com';
+        $amount = 25;
 
-        var_dump($db1 === $db1, $db1=== $db2, $db===$db2);/// return true true true
-        try {
-            $db->beginTransaction();
+        $userModel = new User();
+        $invoiceModel = new Invoice();
+        $invoiceId = (new SignUp($userModel, $invoiceModel))->register([
+            'email' => $email,
+            'name' => $name
+        ], [
+            'amount' => $amount
+        ]);
 
-            $newUserStmt = $db->prepare(
-                'INSERT INTO users (email, full_name, is_active, created_at)
-                      VALUES (?, ?, 1, NOW())'
-            );
-
-            $newInvoiceStmt = $db->prepare(
-                'INSERT INTO invoices (amount, user_id)
-                      VALUES (?, ?)'
-            );
-            $name = "Suraj Prajapat";
-            $email = 'sprajapat770@gmail.com';
-            $amount = 25;
-            $newUserStmt->execute([$email, $name]);
-            $userId = (int)$db->lastInsertId();
-
-            $newInvoiceStmt->execute([$amount, $userId]);
-            $db->commit();
-
-        } catch (\Throwable $e) {
-            if (!$db->inTransaction()) {
-                $db->rollBack();
-            }
-            echo $e->getMessage();
-        }
-
-        $query = 'SELECT * FROM users';
-        echo '<pre>';
-        foreach ($db->query($query) as $user) {
-            var_dump($user);
-        }
-        echo '</pre>';
-
-
-        return View::make('index', ['foo' => 'bar']);
+        return View::make('index', ['invoice' => $invoiceModel->find($invoiceId)]);
     }
 
     public function upload(): void
