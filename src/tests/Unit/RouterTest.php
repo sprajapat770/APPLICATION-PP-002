@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 
+use App\Exceptions\RouteNotFoundException;
 use App\Router;
 use PHPUnit\Framework\TestCase;
 
@@ -68,9 +69,31 @@ class RouterTest extends TestCase
     /** @test */
     public function there_are_no_routes_when_router_is_created(): void
     {
-        $this->router = new Router();
+        $this->assertEmpty((new Router())->routes());
+    }
 
-        $this->assertEmpty($this->router->routes());
+    /**
+     * @test
+     * @dataProvider routeNotFoundCases
+     */
+    public function it_throws_route_not_found_exception(
+        string $requestUri,
+        string $requestMethod
+    ): void
+    {
+        $this->router->post('/users',['Users','store']);
+        $this->router->get('/users',['Users','index']);
 
+        $this->expectException(RouteNotFoundException::class);
+        $this->router->resolve($requestUri, $requestMethod);
+    }
+
+    public function routeNotFoundCases(): array
+    {
+        return [
+            ['users','put'],
+            ['/invoices','post'],
+            ['/users','get'],
+        ];
     }
 }
