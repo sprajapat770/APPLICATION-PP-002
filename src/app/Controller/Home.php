@@ -24,7 +24,7 @@ class Home
         /** @var \PDO $db */
         $db = App::db();
         $name = "Suraj Prajapat";
-        $email = 'sprajapat7012@gmail.com';
+        $email = 'sprajapat7331@gmail.com';
         $amount = 25;
 
         $invoiceId = (new SignUp($this->userModel, $this->invoiceModel))->register([
@@ -34,7 +34,7 @@ class Home
             'amount' => $amount
         ]);
 
-        return View::make('index', ['invoice' => $invoiceModel->find($invoiceId)]);
+        return View::make('index', ['invoice' => $this->invoiceModel->find($invoiceId)]);
     }
 
     public function upload(): void

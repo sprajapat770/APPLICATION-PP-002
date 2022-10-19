@@ -10,7 +10,7 @@ class SignUp extends Model
      * @param Invoice $invoiceModel
      */
     public function __construct(
-       protected User               $userModel,
+       protected User $userModel,
        protected Invoice $invoiceModel
     ) {
         parent::__construct();
