@@ -87,11 +87,39 @@ class RouterTest extends TestCase
                 return true;
             }
         };
-         $this->router->post('/users',['Users','store']);
+
+        $this->router->post('/users',['Users','store']);
         $this->router->get('/users',[$users::class,'store']);
         $this->router->get('/users',['Users','index']);
 
         $this->expectException(RouteNotFoundException::class);
         $this->router->resolve($requestUri, $requestMethod);
+    }
+
+    /** @test */
+    public function it_resolves_route_from_a_closure(): void
+    {
+        $this->router->get('/users', fn() => [1,2,3]);
+        $this->assertEquals([1,2,3],
+        $this->router->resolve('/users','get'));
+    }
+
+    /** @test */
+    public function it_resolves_route(): void
+    {
+        $users = new class(){
+            public function index(): array
+            {
+                return [2,4,5];
+            }
+        };
+        $this->router->get('/users',[$users::class,'index']);
+
+        // assertEquals => ==
+        // assertSame => ===
+        $this->assertSame(
+            [2,4,5],
+            $this->router->resolve('/users','get')
+        );
     }
 }
